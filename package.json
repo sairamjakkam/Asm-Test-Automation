@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.9.0",
-    "@playwright/test": "^1.45.3",
-    "@types/node": "^20.14.11",
+    "@cucumber/cucumber": "^11.1.0",
+    "@playwright/test": "^1.48.2",
+    "@types/node": "^22.9.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2"    
   }
 }

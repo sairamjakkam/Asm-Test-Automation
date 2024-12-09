@@ -1,4 +1,3 @@
-import { Page } from  "@playwright/test";
 import { pageFixture } from "../../hooks/pageFixture";
   
  class EncounterCasesPage{
@@ -34,5 +33,5 @@ import { pageFixture } from "../../hooks/pageFixture";
     }
 }
 
-const abc = new EncounterCasesPage();
-export default abc;
+const encounterCasesPage = new EncounterCasesPage();
+export default encounterCasesPage;
