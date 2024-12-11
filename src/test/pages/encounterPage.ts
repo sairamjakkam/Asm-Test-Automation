@@ -39,13 +39,14 @@ import { pageFixture } from "../../hooks/pageFixture";
     async selectDropdownOptionWithValue(dropdownValue: string) {
         await pageFixture.page.click(`//li[@data-value="${dropdownValue}"]//input`);
     }
-    
+
     //fetching and returning text
     async getTotalCases(){
         let totalCases = await pageFixture.page.locator(this.locators.casesPage.lbl_totalCases).textContent();
         totalCases = totalCases.substring(7,totalCases.length - 1);
         return totalCases;
     }
+    
     async getCaseID(){
         let toastmsg = await pageFixture.page.locator(this.locators.toastmsg_text).textContent();
         let caseID = toastmsg.replace("Encounter created successfully ", "").trim()

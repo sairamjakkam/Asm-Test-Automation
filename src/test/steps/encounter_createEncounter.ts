@@ -16,7 +16,7 @@ When('I click on CreateEncounter button, I should be navigated to Patient Search
     await pageFixture.page.click(encounterPage.locators.casesPage.btn_createEncounter);
 
     //verify landing page
-    expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.patientSearch.HeadingName);
+    expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.patientSearch.headingName);
     await pageFixture.page.waitForTimeout(500);
 });
 
@@ -24,7 +24,7 @@ When('I click on Skip to Documentation button and I land to Product log page wit
     await pageFixture.page.click(encounterPage.locators.patientSearch.btn_skipToDocumentation);
 
     //verify landing page, missing detail error message and toast message
-    expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.cases.HeadingName);
+    expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.cases.headingName);
     expect(pageFixture.page.locator(encounterPage.locators.productLog.errormsg_missingDetail)).toHaveText(data.encounter.productLog.errorMsg_missingDetails);
     expect(pageFixture.page.locator(encounterPage.locators.toastmsg_text)).toContainText(data.encounter.productLog.toastMsg_newCaseCreated);
     
@@ -38,7 +38,7 @@ When('I click on View Encounter Details button and I land to Review Encounter pa
     await pageFixture.page.click(encounterPage.locators.productLog.btn_viewEncounterDetails);
     
     //verify landing page
-    expect(pageFixture.page.locator(encounterPage.locators.reviewEncounter.nav_pageHeading)).toHaveText(data.encounter.reviewEncounter.HeadingName);
+    expect(pageFixture.page.locator(encounterPage.locators.reviewEncounter.nav_pageHeading)).toHaveText(data.encounter.reviewEncounter.headingName);
     
     //verify missing detail label and missing detail toast message
     expect(pageFixture.page.locator(encounterPage.locators.reviewEncounter.errormsg_labels)).toContainText(data.encounter.reviewEncounter.errorMsg_detailsMissing);
@@ -57,7 +57,7 @@ Then('I click on Encounter and verify Encounter CaseID and status', async functi
     {
         throw new Error("Total case count has not increased even after new case creation!")
     }
-
+   
     //search with newly created caseID and verify status
     await pageFixture.page.locator(encounterPage.locators.casesPage.input_searchBox).fill(caseID);
     await pageFixture.page.waitForSelector(encounterPage.locators.casesPage.btn_firstrow_action);

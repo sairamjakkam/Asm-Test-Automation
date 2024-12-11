@@ -1,9 +1,5 @@
 Feature: Create Encounter and verify
     
-    Scenario: test
-    Given I navigated to encounter case page and varified page
-    Then I click on Encounter and verify Encounter CaseID and status
-    
     @test
     Scenario: Create Encounter without entering patient details, productlog and verify missing details and cases list 
         Given I navigated to encounter case page and varified page
