@@ -1,3 +1,22 @@
 {
-    "HeadingName":"Cases"
+    "encounter": {
+        "cases": {
+            "HeadingName": "Cases"
+        },
+        "patientSearch": {
+            "HeadingName": "Patient Search"
+        },
+        "productLog": {
+            "HeadingName": "Cases",
+            "toastMsg_newCaseCreated": "Encounter created successfully",
+            "errorMsg_missingDetails": "Complete Missing details before proceeding"
+        },
+        "reviewEncounter": {
+            "HeadingName": "Review Encounter",
+            "errorMsg_detailsMissing": "details missing",
+            "toastMsg_requiredFields": "Please complete all the required fields before saving."
+        }
+    }
+    
+    
 }
