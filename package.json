@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env ENV=QA cucumber-js --config=config/cucumber.js || true"
+    "test": "cross-env ENV=QA cucumber-js --config=config/cucumber.js"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,21 @@
 {
     "encounter": {
+
+        
+        "Procedurelog": {
+            "headingName": "Vision Station",
+            "roomNumberHeading" : "Interventional Radiology - OR-3"
+        },
+
+        "Createencounter": {
+            "headingName" : "Create New Encounter",
+            "pateintNameField" : "Patient Details",
+            "patientName": "jessi ",
+            "patientDob":"10/13/2024"
+        },
+
+
+
         "cases": {
             "headingName": "Cases"
         },

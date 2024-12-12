@@ -25,10 +25,10 @@ After(async function ({ pickle, result }) {
     const img = await pageFixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" })
     await this.attach(img, "image/png");
     }
-    await pageFixture.page.close();
-    await context.close();
+    // await pageFixture.page.close();
+    // await context.close();
 })
 
 AfterAll(async function () {
-    await browser.close();
+    //await browser.close();
 })

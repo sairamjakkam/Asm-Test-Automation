@@ -10,7 +10,7 @@ setDefaultTimeout(60 * 1000);
         await pageFixture.page.goto(process.env.BASEURL);
 
         //varify landing page
-        expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.cases.HeadingName);
+        expect(pageFixture.page.locator(encounterPage.locators.pageHeading)).toHaveText(data.encounter.cases.headingName);
     });
 
     Then('I enter patient name in searchBox as {string} and selects some options in {string} dropdown', async function (patientName, roomName) {
