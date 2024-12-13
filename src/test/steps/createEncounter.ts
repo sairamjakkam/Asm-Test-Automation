@@ -10,7 +10,6 @@ import { stat } from "fs";
 
 
 
-
 Given('I am at the procedure log page', async function () {
 
   //navigating to the page
@@ -28,7 +27,6 @@ Then('I should verify the landing page', async function () {
 
 });
 
-
 When('I click on the {string} dropdown and select any room number', async function (string) {
 
   //selecting room number dropdown
@@ -36,7 +34,6 @@ When('I click on the {string} dropdown and select any room number', async functi
   await createEncounter.selectDropdownOptionWithValue(string);
 
 });
-
 
 Then('I should verfiy the room number heading text after changing', async function () {
 
@@ -69,7 +66,6 @@ When('I enter existing {string} and click on search button', async function (pat
 });
 
 
-
 Then('Patient name and dob fields should be pre filled and disable', async function () {
 
   //verifying the auto filled details
@@ -82,7 +78,6 @@ Then('Patient name and dob fields should be pre filled and disable', async funct
   console.log('test');
 
 });
-
 
 
 When('I enter all the mandatory fields and click on the create encounter button', async function () {
@@ -100,9 +95,7 @@ When('I enter all the mandatory fields and click on the create encounter button'
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.selectNurse);
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.createEncounterButton);
   
-
 });
-
 
 Then('I verify the new encounter created with the patient name and status', async function () {
 
