@@ -7,7 +7,7 @@ class CreateEncounter {
 
         pageHeading: "//div[text()='Vision Station']",
         roomNumberDropdown: "//div[normalize-space()='OR-1']",
-        roomNumberHeading: "//p[text()='Interventional Radiology - OR-3']",
+        roomNumberHeading: "//p[text()='Interventional Radiology - OR-4']",
         verifyPatientName: "(//tbody/tr[last()]//p[@class='MuiTypography-root MuiTypography-body1 font-medium css-1lku62o-MuiTypography-root'])[1]",
         statusText: "//tbody/tr[last()]//span[text()='Upcoming']",
 
@@ -47,6 +47,12 @@ class CreateEncounter {
     //passing dynamic dropdown value
     async selectDropdownOptionWithValue(dropdownValue: string) {
         await pageFixture.page.click(`//li[text()='${dropdownValue}']`);
+    }
+
+    
+    //passing the roomNumber dynamically from feature file, roomnumber has to be changed only in feature file and testdata
+    roomNumberHeadingText(roomNumber: string): string {
+        return `//p[text()='Interventional Radiology - ${roomNumber}']`;
     }
 
 

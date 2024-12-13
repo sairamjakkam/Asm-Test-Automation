@@ -38,11 +38,12 @@ When('I click on the {string} dropdown and select any room number', async functi
 });
 
 
-Then('I should verfiy the room number heading text after changing', async function () {
+Then('I should verfiy the room number heading text after changing to {string}', async function (string) {
 
-  //verifying the roomnumber dropdown text
-  await expect(pageFixture.page.locator(createEncounter.locators.roomNumberHeading)).toContainText(data.encounter.Procedurelog.roomNumberHeading);
+  //verifying the roomnumber dropdown text dynamically
 
+  const dynamicRoomHeadingLocator = createEncounter.roomNumberHeadingText(string);
+  await expect(pageFixture.page.locator(dynamicRoomHeadingLocator)).toContainText(data.encounter.Procedurelog.roomNumberHeading);
 });
 
 
