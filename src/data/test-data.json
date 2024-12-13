@@ -12,25 +12,6 @@
             "pateintNameField" : "Patient Details",
             "patientName": "jessi ",
             "patientDob":"10/13/2024"
-        },
-
-
-
-        "cases": {
-            "headingName": "Cases"
-        },
-        "patientSearch": {
-            "headingName": "Patient Search"
-        },
-        "productLog": {
-            "headingName": "Cases",
-            "toastMsg_newCaseCreated": "Encounter created successfully",
-            "errorMsg_missingDetails": "Complete Missing details before proceeding"
-        },
-        "reviewEncounter": {
-            "headingName": "Review Encounter",
-            "errorMsg_detailsMissing": "details missing",
-            "toastMsg_requiredFields": "Please complete all the required fields before saving."
         }
     }
     
