@@ -1,8 +1,8 @@
-Feature: Create encounter and verify 
+Feature: Create Encounter and verify 
 
 
 @EncounterTest
-Scenario: Create encounter with the existing pateint MRN ,in a selected room and verify the room number , encounter details such as MRN , pateint name and status
+Scenario: Create encounter with the existing pateint MRN ,in a selected room and verify the room number , encounter details such as pateint name and status
 
 Given I am at the procedure log page 
 Then I should verify the landing page
