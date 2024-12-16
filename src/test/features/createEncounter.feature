@@ -16,7 +16,7 @@ Then I verify the new encounter created with the patient name and status
 
  Examples:
         | patientMRN | room number |
-        | 12345      |   OR-5      |
+        | 12345      |   OR-7      |
 
 
 

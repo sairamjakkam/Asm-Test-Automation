@@ -14,7 +14,7 @@ Given('I am at the procedure log page', async function () {
 
   //navigating to the page
   await pageFixture.page.goto(process.env.BASEURL);
-  await pageFixture.page.waitForTimeout(3000);
+  await pageFixture.page.waitForTimeout(4000);
 
 });
 
@@ -35,12 +35,8 @@ When('I click on the {string} dropdown and select any room number', async functi
 
 });
 
-<<<<<<< HEAD
 
 Then('I should verfiy the room number heading text after changing to {string}', async function (string) {
-=======
-Then('I should verfiy the room number heading text after changing', async function () {
->>>>>>> a712bd3986bf7a94a832b11c22ecc5db0c3f79e5
 
   //verifying the roomnumber dropdown text dynamically
 
