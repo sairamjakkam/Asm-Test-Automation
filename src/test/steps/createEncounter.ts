@@ -7,7 +7,8 @@ import createEncounter from "../pages/createEncounterPage";
 import { stat } from "fs";
 
 
-
+let NAME
+let STATUS
 
 
 Given('I am at the procedure log page', async function () {
@@ -21,6 +22,7 @@ Given('I am at the procedure log page', async function () {
 Then('I should verify the landing page', async function () {
 
   //verifying landing page
+  await pageFixture.page.waitForTimeout(2000);
   await expect(pageFixture.page.locator(createEncounter.locators.pageHeading)).toHaveText(data.encounter.Procedurelog.headingName);
   console.log(data.encounter.Procedurelog.headingName);
   console.log(createEncounter.locators.pageHeading);
@@ -42,8 +44,8 @@ Then('I should verfiy the room number heading text after changing to {string}', 
 
   const dynamicRoomHeadingLocator = createEncounter.roomNumberHeadingText(string);
   await expect(pageFixture.page.locator(dynamicRoomHeadingLocator)).toContainText(data.encounter.Procedurelog.roomNumberHeading);
-});
 
+});
 
 When('I click the Create Encounter button , and verify the popup with encounter text and field', async function () {
 
@@ -52,21 +54,18 @@ When('I click the Create Encounter button , and verify the popup with encounter 
   await expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.popUpHeading)).toHaveText(data.encounter.Createencounter.headingName);
   await expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.fieldHeading)).toHaveText(data.encounter.Createencounter.pateintNameField);
 
+
 });
 
-
-
-When('I enter existing {string} and click on search button', async function (patientMRN) {
+When('I enter existing {string} and click on search button', async function (patientMRNs) {
 
   //entering all the necessary details in the fields
   await pageFixture.page.click(createEncounter.locators.encounterCreation.inputPatientMrn);
-  await pageFixture.page.locator(createEncounter.locators.encounterCreation.inputPatientMrn).fill(patientMRN);
+  await pageFixture.page.locator(createEncounter.locators.encounterCreation.inputPatientMrn).fill(patientMRNs);
   await pageFixture.page.hover(createEncounter.locators.encounterCreation.searchPatientButton);
   await pageFixture.page.click(createEncounter.locators.encounterCreation.searchPatientButton);
-  await pageFixture.page.waitForTimeout(2000);
 
 });
-
 
 Then('Patient name and dob fields should be pre filled and disable', async function () {
 
@@ -77,15 +76,12 @@ Then('Patient name and dob fields should be pre filled and disable', async funct
   await expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.patientDobValue)).toHaveValue(data.encounter.Createencounter.patientDob);
   const storedPatientName = await pageFixture.page.locator(createEncounter.locators.encounterCreation.patientNameValue).inputValue();
   console.log(storedPatientName);
-  console.log('test');
 
 });
-
 
 When('I enter all the mandatory fields and click on the create encounter button', async function () {
 
   //entering the physician,procedure and nurse fields
-  
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.procedureDropdown);
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.procedureValue);
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.selectProcedure);
@@ -96,7 +92,8 @@ When('I enter all the mandatory fields and click on the create encounter button'
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.nurseValue);
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.selectNurse);
   await pageFixture.page.click(createEncounter.locators.Proceduredetails.createEncounterButton);
-  
+  await pageFixture.page.waitForTimeout(2000);
+
 });
 
 Then('I verify the new encounter created with the patient name and status', async function () {
@@ -107,11 +104,47 @@ Then('I verify the new encounter created with the patient name and status', asyn
   });
 
   //verify the newly created encounter with the patient name captured before
-  let name = await pageFixture.page.locator(createEncounter.locators.verifyPatientName).textContent();
-  await expect(pageFixture.page.locator(createEncounter.locators.verifyPatientName)).toHaveText(name);
+  NAME = await pageFixture.page.locator(createEncounter.locators.verifyPatientName).textContent();
+  await expect(pageFixture.page.locator(createEncounter.locators.verifyPatientName)).toHaveText(data.encounter.Createencounter.patientName);
+  console.log(NAME)
+  STATUS = await pageFixture.page.locator(createEncounter.locators.statusText).textContent();
+  await expect(pageFixture.page.locator(createEncounter.locators.statusText)).toHaveText(STATUS);
+  console.log(STATUS)
+});
 
-  let status =await pageFixture.page.locator(createEncounter.locators.statusText).textContent();
-  await expect(pageFixture.page.locator(createEncounter.locators.statusText)).toHaveText(status);
+
+When('I enter new {string} and click on search button', async function (PatientMRN) {
+
+  //Created generic logic in page class for generating the random unique MRN on everyrun and passed below
+  const randomMRN= createEncounter.generateRandomMRN();
+  console.log(`Generated MRN: ${randomMRN}`);
+  await pageFixture.page.locator(createEncounter.locators.encounterCreation.inputPatientMrn).fill(randomMRN);
+  await pageFixture.page.hover(createEncounter.locators.encounterCreation.searchPatientButton);
+  await pageFixture.page.click(createEncounter.locators.encounterCreation.searchPatientButton);
   
+});
+
+
+Then('Patient name and dob fields should be enabled', async function () {
+
+  //verifying the fields are enabled
+  expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.patientNameField).isEnabled());
+  expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.patientDob).isEnabled());
+  
+});
+
+When('I enter {string} and patient {string} and click on create patient button', async function (PatientName, dob) {
+
+  //passing the name and dob from feature file
+  expect(pageFixture.page.locator(createEncounter.locators.encounterCreation.patientNameField).fill(PatientName));
+  await pageFixture.page.waitForTimeout(3000);
+  await pageFixture.page.hover(createEncounter.locators.encounterCreation.dobCalender);
+  await pageFixture.page.click(createEncounter.locators.encounterCreation.dobCalender);
+  await pageFixture.page.hover(createEncounter.locators.encounterCreation.yearCalender);
+  await pageFixture.page.click(createEncounter.locators.encounterCreation.yearCalender);
+  const dynamicBirthYearLocator = createEncounter.yearValue(dob);
+  await pageFixture.page.locator(dynamicBirthYearLocator).click();
+  await pageFixture.page.click(createEncounter.locators.encounterCreation.dayCalender);
+  await pageFixture.page.click(createEncounter.locators.encounterCreation.createPatientBtn);
 
 });
