@@ -3,8 +3,13 @@ import { chromium,Browser, Page, BrowserContext } from "@playwright/test";
 import {pageFixture} from "./pageFixture";
 import { invokeBrowser } from "../helper/browser/browserManager";
 import { getEnv } from "../helper/env/env";
+import { setDefaultTimeout } from '@cucumber/cucumber';
 
 let browser: Browser;
+
+
+// Set global timeout to 10 seconds (10000 milliseconds)
+setDefaultTimeout(10000);
 let context: BrowserContext;
 
 BeforeAll(async function() {

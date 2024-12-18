@@ -22,6 +22,11 @@ module.exports = {
             "json:test-results/cucumber-report.json",
             "rerun:@rerun.txt"
         ],
-        parallel: 1
+        parallel: 1,
+        worldParameters: {
+            defaultTimeout: 10000 // 10 seconds timeout
+        }
+
+        
     }
 }
